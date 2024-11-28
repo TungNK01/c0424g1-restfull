@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,5 +29,13 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
+    @GetMapping("/list")
+    public ModelAndView listCustomer() {
+        ModelAndView modelAndView = new ModelAndView("/customer/list");
+        Iterable<Customer> customers = iCustomerService.findAll();
+        modelAndView.addObject("customers", customers);
+        return modelAndView;
     }
 }
