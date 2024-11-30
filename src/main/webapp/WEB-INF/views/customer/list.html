@@ -38,11 +38,9 @@
             //chặn sự kiện mặc định của thẻ
             event.preventDefault();
         }
-
         function getCustomer(customer) {
             return `<tr><td >${customer.firstName}</td><td >${customer.lastName}</td></tr>`;
         }
-
         function successHandler() {
             $.ajax({
                 type: "GET",
@@ -62,7 +60,6 @@
                 }
             });
         }
-
     </script>
 
 
@@ -70,14 +67,16 @@
 <body>
 <h1>demo ajax</h1>
 
+Language: <a href="?lang=en">English</a> | <a href="?lang=haw">Hawaii</a>
+
 <form id="add-customer">
     <table>
         <tr>
-            <td>First Name:</td>
+            <td th:text="#{firstname_label}"></td>
             <td><input type="text" id="firstName" placeholder="firstName"></td>
         </tr>
         <tr>
-            <td>Last Name:</td>
+            <td th:text="#{lastname_label}"></td>
             <td><input type="text" id="lastName" placeholder="lastName"></td>
         </tr>
         <tr>
@@ -89,6 +88,7 @@
 
 <h1>Customer List</h1>
 <table id="customerList">
+    <!-- Hien thi danh sach o day -->
 </table>
 
 </body>
